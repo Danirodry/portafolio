@@ -1,0 +1,609 @@
+/* --- RESET Y ESTILOS GLOBALES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #050505;
+  color: rgb(229, 231, 235);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 80rem; /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* 16px */
+  padding-right: 1rem; /* 16px */
+  overflow-x: hidden;
+}
+
+main {
+  padding-top: 80px; /* Ajusta este valor según la altura de tu header */
+}
+
+/* --- EFECTOS DE FONDO --- */
+.image-gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.layer-blur {
+  height: 0;
+  width: 30rem;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  box-shadow: 0 0 700px 15px rgb(201, 201, 201);
+  rotate: -30deg;
+  z-index: -1;
+}
+/* ------------------------ ENCABEZADO Y NAVEGACIÓN ------------------------- */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  margin: 1rem 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 60px;
+  gap: 2rem;
+  padding: 1rem 1rem;
+  background: rgba(20, 20, 20, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.navbar a {
+  color: #e7e7e7;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  letter-spacing: 0.07em;
+}
+
+.navbar a:hover {
+  color: rgb(172, 172, 172); /* green-400 */
+}
+
+.contact-button {
+  text-decoration: none;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #3f3f3f 0%, #232323 100%);
+  color: #e7e7e7;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.contact-button:hover {
+  background-color: rgb(172, 172, 172); /* gray-700 */
+}
+
+/* ---------------------------- SECCIÓN HERO (PRINCIPAL) ----------------------------------- */
+main {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.hero-text {
+  width: 100%;
+  text-align: center;
+}
+
+.tag-box {
+  position: relative;
+  display: inline-block;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 50px;
+  background: linear-gradient(
+    to right,
+    #444444,
+    #292929,
+    #05e097,
+    #00ff99,
+    #05e097,
+    #444444
+  );
+  background-size: 200%;
+  animation: animationGradient 5s infinite linear;
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag-box:hover {
+  transform: scale(1.02);
+}
+
+.tag-box .tag {
+  position: absolute;
+  inset: 1px 1px 1px 1px;
+  background-color: #050505;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+  cursor: pointer;
+  color: #e7e7e7;
+  text-decoration: none;
+}
+
+@keyframes animationGradient {
+  to {
+    background-position: 200%;
+  }
+}
+
+.hero-text h1 {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  color: rgb(156, 163, 175); /* gray-400 */
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.social-icon {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  background-color: rgb(31, 41, 55); /* gray-800 */
+  border-radius: 0.7rem;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+.social-icon:hover {
+  background: linear-gradient(90deg, #05e097 0%, #00ff99 100%);
+  color: #232323;
+}
+.social-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.hero-spline {
+  width: 100%;
+  height: 24rem; /* 384px */
+}
+.hero-spline spline-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------------- CARRUCEL --------------------------- */
+
+.tech-carousel-container {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Degradados en los bordes */
+.tech-carousel-container {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+/* Degradados en los bordes */
+.tech-carousel-container::before,
+.tech-carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 400px;
+  height: 100%;
+  z-index: 2;
+}
+
+.tech-carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, #050505 50%, transparent 100%);
+}
+
+.tech-carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, #050505 50%, transparent 100%);
+}
+
+.tech-carousel {
+  display: flex;
+  width: fit-content;
+  animation: scroll 30s linear infinite;
+  padding: 0 100px;
+}
+
+.tech-slide {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 0 2rem;
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.tech-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.tech-item span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --------------------------- SECCIÓN DE EXPERIENCIA ------------------------------ */
+.experience-section {
+  padding-top: 6rem;
+}
+.experience-section h2,
+.placeholder-section h2,
+.about-section h2 {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+.experience-container {
+  max-width: 56rem; /* 896px */
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: rgba(17, 24, 39, 0.5);
+  border-radius: 0.75rem;
+  border: 1px solid rgb(55, 65, 81); /* gray-800 */
+  transition: border-color 0.3s ease;
+}
+.experience-card:hover {
+  border-color: rgba(52, 211, 153, 0.5);
+}
+.experience-date {
+  color: #34d399; /* green-400 */
+  font-weight: 600;
+}
+.experience-details h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+.experience-details .company {
+  color: #34d399;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.experience-details ul {
+  list-style-position: inside;
+  list-style-type: disc;
+  color: rgb(156, 163, 175);
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Heramientas de programacion--- */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tech-stack span {
+  background-color: rgb(55, 65, 81); /* gray-700 */
+  color: rgb(209, 213, 219); /* gray-300 */
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* --- SECCIONES DE RELLENO --- */
+.placeholder-section {
+  padding-top: 6rem;
+  text-align: center;
+  color: rgb(107, 114, 128); /* gray-500 */
+}
+
+/* --------------------------- SECCIÓN SOBRE MÍ ------------------------------ */
+.about-section {
+  padding-top: 6rem;
+  margin-bottom: 4rem;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Estilos para los acordeones */
+.about-accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.accordion-button {
+  width: 100%;
+  padding: 1.25rem;
+  background: none;
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.accordion-icon {
+  color: #34d399;
+  width: 24px;
+  height: 24px;
+}
+
+.accordion-toggle {
+  font-size: 1.5rem;
+  color: #34d399;
+  transition: transform 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 1.25rem;
+  transition: all 0.3s ease-out;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.accordion-content.active {
+  max-height: 500px;
+  opacity: 1;
+  padding: 1.25rem;
+}
+
+.button-content {
+  font-size: 1rem;
+}
+
+.accordion-content ul {
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.accordion-content li {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.accordion-content li strong {
+  display: block;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+/* Estilos para la descripción */
+.about-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.about-description p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------- FOOTER --------------------------- */
+footer {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid rgb(55, 65, 81);
+  margin-top: 4rem;
+  color: rgb(107, 114, 128);
+  font-size: 0.875rem;
+}
+
+/* ---------------------- MEDIA QUERIES PARA RESPONSIVE DESIGN -------------------------- */
+
+/* Media queries */
+@media (max-width: 768px) {
+  /* Degradados en los bordes */
+  .tech-carousel-container::before,
+  .tech-carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 600%;
+    z-index: 2;
+  }
+  .hero-spline {
+    scale: 0.8;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  header {
+    margin-top: 0;
+    padding: 1rem 0.5rem; /* 16px 8px */
+    scale: 0.7;
+  }
+}
+
+/* Medium devices (md, 768px and up) */
+@media (min-width: 768px) {
+  .desktop-menu {
+    display: flex;
+  }
+  .mobile-menu-button-container {
+    display: none;
+  }
+  .hero-text h1 {
+    font-size: 3.75rem; /* 60px */
+  }
+  .description {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .header {
+    padding: 1rem 1rem; /* 16px 32px */
+  }
+
+  .tech-slide {
+    gap: 2rem;
+  }
+
+  .tech-item img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tech-item span {
+    font-size: 0.8rem;
+  }
+}
+
+/* Large devices (lg, 1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .hero-section {
+    flex-direction: row;
+  }
+  .hero-text {
+    width: 50%;
+    text-align: left;
+  }
+  .description {
+    margin-left: 0;
+  }
+  .social-links {
+    justify-content: flex-start;
+  }
+  .hero-spline {
+    width: 50%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
