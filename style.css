@@ -17,6 +17,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* cambiar el color cuando se selecciona texto */
+::selection {
+  background-color: #34d399;
+  color: #050505;
+}
+
 /* --- CONTENEDOR PRINCIPAL --- */
 .container {
   position: relative;
@@ -384,7 +390,13 @@ main {
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  border-radius: 8px;
+  border: 1px solid rgb(55, 65, 81); /* gray-800 */
+  transition: border-color 0.3s ease;
+}
+
+.tech-stack span:hover {
+  border-color: rgb(209, 213, 219);
 }
 
 /* --- SECCIONES DE RELLENO --- */
