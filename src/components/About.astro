@@ -1,0 +1,131 @@
+---
+---
+<section id="about" class="about-section">
+    <h2>Sobre Mí</h2>
+    <div class="about-container">
+        <!-- Columna izquierda - Acordeones -->
+        <div class="about-accordions">
+            <div class="accordion">
+                <button class="accordion-button">
+                    <div class="button-content">
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 9L12 5L2 9L12 13L22 9V15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path d="M6 10.6V15C6 17.2091 8.68629 19 12 19C15.3137 19 18 17.2091 18 15V10.6"
+                                stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <span>Educación</span>
+                    </div>
+                    <span class="accordion-toggle">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>
+                            <strong>Ingeniería Multimedia</strong>
+                            <p>Universidad Simon Bolivar | 2019 - 2025</p>
+                        </li>
+                        <li>
+                            <strong>Bootcamp Programacion</strong>
+                            <p>OrienteTech | 2024</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-button">
+                    <div class="button-content">
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-code-xml-icon lucide-code-xml">
+                            <path d="m18 16 4-4-4-4" />
+                            <path d="m6 8-4 4 4 4" />
+                            <path d="m14.5 4-5 16" />
+                        </svg>
+                        <span>Desarrollo Web</span>
+                    </div>
+                    <span class="accordion-toggle">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Single Page Applications (SPAs)</li>
+                        <li>Landing pages y business websites</li>
+                        <li>Portfolio websites</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-button">
+                    <div class="button-content">
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-panels-top-left-icon lucide-panels-top-left">
+                            <rect width="18" height="18" x="3" y="3" rx="2" />
+                            <path d="M3 9h18" />
+                            <path d="M9 21V9" />
+                        </svg>
+                        <span>UX / UI Diseño y Prototipado</span>
+                    </div>
+                    <span class="accordion-toggle">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Diseño de interfaz con Figma & Canva</li>
+                        <li>UX research & improvements</li>
+                        <li>Prototipado para Webs y Mobile apps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna derecha - Texto -->
+        <div class="about-description">
+            <p>
+                Soy un desarrollador web apasionado por crear experiencias digitales excepcionales. Mi
+                enfoque combina creatividad técnica con principios sólidos de diseño para construir
+                soluciones web intuitivas y eficientes.
+            </p>
+            <p>
+                Con experiencia en desarrollo frontend y un ojo para el diseño, me especializo en construir
+                interfaces de usuario modernas y responsivas. Me mantengo constantemente actualizado con las
+                últimas tendencias y tecnologías del desarrollo web.
+            </p>
+            <p>
+                Disfruto trabajando en equipo y enfrentando nuevos desafíos que me permitan crecer
+                profesionalmente. Cuando no estoy programando, me dedico a aprender nuevas tecnologías y
+                contribuir a la comunidad de desarrolladores.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Script autoejecutable de Astro para gestionar los acordeones en el cliente
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const toggle = button.querySelector('.accordion-toggle');
+
+            // Cerrar otros acordeones abiertos
+            accordionButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    const otherContent = otherButton.nextElementSibling;
+                    const otherToggle = otherButton.querySelector('.accordion-toggle');
+                    if (otherContent) otherContent.classList.remove('active');
+                    if (otherToggle) otherToggle.textContent = '+';
+                }
+            });
+
+            // Conmutar el estado del acordeón actual
+            if (content && toggle) {
+                content.classList.toggle('active');
+                toggle.textContent = content.classList.contains('active') ? '−' : '+';
+            }
+        });
+    });
+</script>

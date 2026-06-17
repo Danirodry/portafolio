@@ -50,14 +50,18 @@ main {
 }
 
 .layer-blur {
-  height: 0;
   width: 30rem;
+  height: 30rem;
   position: absolute;
-  top: 10%;
-  right: 10%;
-  box-shadow: 0 0 700px 15px rgb(201, 201, 201);
+  top: 5%;
+  right: 5%;
+  background: radial-gradient(ellipse at center, rgba(200, 200, 200, 0.15) 0%, transparent 70%);
+  filter: blur(80px);
+  border-radius: 50%;
   rotate: -30deg;
   z-index: -1;
+  will-change: transform;
+  pointer-events: none;
 }
 /* ------------------------ ENCABEZADO Y NAVEGACIÓN ------------------------- */
 header {
@@ -76,15 +80,17 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 90%;
+  max-width: 700px;
   height: 60px;
   gap: 2rem;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1.5rem;
   background: rgba(20, 20, 20, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar a {
@@ -229,105 +235,169 @@ main {
   height: 100%;
 }
 
-/* -------------------------- CARRUCEL --------------------------- */
+/* -------------------------- FILTROS DE TECNOLOGÍA --------------------------- */
 
-.tech-carousel-container {
+.tech-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Wrapper para cada botón con dropdown */
+.filter-group-wrapper {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
-  padding: 2rem 0;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
-/* Degradados en los bordes */
-.tech-carousel-container {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
-  padding: 2rem 0;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-}
-
-/* Degradados en los bordes */
-.tech-carousel-container::before,
-.tech-carousel-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 400px;
-  height: 100%;
-  z-index: 2;
-}
-
-.tech-carousel-container::before {
-  left: 0;
-  background: linear-gradient(to right, #050505 50%, transparent 100%);
-}
-
-.tech-carousel-container::after {
-  right: 0;
-  background: linear-gradient(to left, #050505 50%, transparent 100%);
-}
-
-.tech-carousel {
-  display: flex;
-  width: fit-content;
-  animation: scroll 30s linear infinite;
-  padding: 0 100px;
-}
-
-.tech-slide {
-  display: flex;
+/* Botón principal de grupo */
+.group-filter-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 4rem;
-  padding: 0 2rem;
-}
-
-.tech-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
-}
-
-.tech-item img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-.tech-item span {
-  font-size: 0.9rem;
+  gap: 0.4rem;
+  padding: 0.5rem 1.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
   white-space: nowrap;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.group-filter-btn .chevron {
+  opacity: 0.5;
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
-/* --------------------------- SECCIÓN DE EXPERIENCIA ------------------------------ */
-.experience-section {
+.group-filter-btn:hover,
+.filter-group-wrapper:hover .group-filter-btn {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.35);
+  color: #34d399;
+}
+
+.filter-group-wrapper:hover .group-filter-btn .chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.group-filter-btn.active {
+  background: rgba(52, 211, 153, 0.18);
+  border-color: #34d399;
+  color: #34d399;
+  font-weight: 600;
+}
+
+/* Dropdown de pills */
+.tech-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  min-width: 180px;
+  max-width: 260px;
+  justify-content: center;
+  z-index: 100;
+  /* Oculto por defecto */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Puente invisible para evitar perder el hover al mover el cursor hacia el dropdown */
+.tech-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -0.6rem;
+  left: 0;
+  width: 100%;
+  height: 0.6rem;
+  background: transparent;
+}
+
+.filter-group-wrapper:hover .tech-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Pill individual dentro del dropdown */
+.tech-pill {
+  padding: 0.25rem 0.7rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+}
+
+.tech-pill:hover {
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+  transform: translateY(-1px);
+}
+
+.tech-pill.active {
+  background: rgba(52, 211, 153, 0.2);
+  border-color: #34d399;
+  color: #34d399;
+  font-weight: 600;
+}
+
+/* Contador de resultados */
+.filter-count {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  min-height: 1.2em;
+}
+
+.no-results {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  padding: 2rem 0;
+}
+
+/* Visibilidad de tarjetas */
+.project-card-wrapper {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card-wrapper.hidden {
+  display: none;
+}
+
+
+
+/* --------------------------- SECCIÓN DE PROYECTOS ------------------------------ */
+.projects-section {
   padding-top: 6rem;
 }
-.experience-section h2,
-.placeholder-section h2,
+.projects-section h2,
 .about-section h2 {
   font-size: 1.875rem; /* 30px */
   font-weight: 700;
@@ -335,75 +405,172 @@ main {
   margin-bottom: 3rem;
   color: white;
 }
-.experience-container {
+.projects-container {
   max-width: 56rem; /* 896px */
   margin: 0 auto;
   display: grid;
   gap: 2rem;
 }
-.experience-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background-color: rgba(17, 24, 39, 0.5);
-  border-radius: 0.75rem;
-  border: 1px solid rgb(55, 65, 81); /* gray-800 */
-  transition: border-color 0.3s ease;
-}
-.experience-card:hover {
-  border-color: rgba(52, 211, 153, 0.5);
-}
-.experience-date {
-  color: #34d399; /* green-400 */
-  font-weight: 600;
-}
-.experience-details h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 0.25rem;
-}
-.experience-details .company {
-  color: #34d399;
-  margin-bottom: 0.75rem;
-  display: block;
-}
-.experience-details ul {
-  list-style-position: inside;
-  list-style-type: disc;
-  color: rgb(156, 163, 175);
+.project-card {
   display: grid;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  grid-template-columns: 240px 1fr;
+  gap: 1.75rem;
+  padding: 1.5rem;
+  background-color: rgba(17, 24, 39, 0.4);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
 }
 
-/* --- Heramientas de programacion--- */
+.project-card:hover {
+  border-color: rgba(52, 211, 153, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Contenedor de la Imagen con Scroll */
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 3.5s ease-in-out;
+  pointer-events: none;
+}
+
+/* Efecto de desplazamiento al pasar el ratón */
+.project-card:hover .project-image {
+  transform: translateY(calc(-100% + 220px));
+}
+
+/* Overlay sutil para darle profundidad y consistencia de color */
+.project-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-image-overlay {
+  opacity: 0.4;
+}
+
+/* Detalles del Proyecto */
+.project-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.project-date {
+  font-size: 0.85rem;
+  color: #34d399; /* green-400 */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.project-details h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.project-details .company {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-details ul {
+  list-style-position: inside;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  color: rgb(156, 163, 175);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.project-details ul li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.project-details ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #34d399;
+  font-weight: bold;
+}
+
+/* --- Herramientas de programacion --- */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
+
 .tech-stack span {
-  background-color: rgb(55, 65, 81); /* gray-700 */
-  color: rgb(209, 213, 219); /* gray-300 */
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid rgb(55, 65, 81); /* gray-800 */
-  transition: border-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .tech-stack span:hover {
-  border-color: rgb(209, 213, 219);
+  border-color: rgba(52, 211, 153, 0.4);
+  background-color: rgba(52, 211, 153, 0.06);
+  color: #34d399;
 }
 
-/* --- SECCIONES DE RELLENO --- */
-.placeholder-section {
-  padding-top: 6rem;
-  text-align: center;
-  color: rgb(107, 114, 128); /* gray-500 */
+/* Responsive */
+@media (max-width: 768px) {
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-image-wrapper {
+    height: 180px;
+  }
+  
+  .project-card:hover .project-image {
+    transform: translateY(calc(-100% + 180px));
+  }
 }
 
 /* --------------------------- SECCIÓN SOBRE MÍ ------------------------------ */
@@ -549,15 +716,29 @@ footer {
     z-index: 2;
   }
   .hero-spline {
-    scale: 0.8;
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    height: 380px;
+    margin: 0 auto;
   }
   header {
-    margin-top: 0;
-    padding: 1rem 0.5rem; /* 16px 8px */
-    scale: 0.7;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+  }
+  .navbar {
+    width: 100%;
+    height: 52px;
+    gap: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+  }
+  .navbar a {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+  .contact-button {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    border-radius: 0.4rem;
   }
 }
 

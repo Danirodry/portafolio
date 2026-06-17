@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Daniel Rodriguez | Desarrollador Front-End", 
+	description = "Portafolio de Daniel Rodriguez, un desarrollador web con 3 años de experiencia en aplicaciones Front-End y Back-End." 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Google Fonts Inter — carga no bloqueante -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preload" as="style"
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
+			rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript>
+			<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+		</noscript>
+
+		<!-- Spline Viewer — los módulos ES son diferidos por defecto (no bloquean el render) -->
+		<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.98/build/spline-viewer.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Efecto de fondo con gradiente y blur — imagen decorativa -->
+			<img class="image-gradient" src="/gradient.png" alt="" aria-hidden="true" />
+			<div class="layer-blur" aria-hidden="true"></div>
+			<slot />
+		</div>
+	</body>
+</html>

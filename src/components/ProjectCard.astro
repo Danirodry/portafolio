@@ -1,0 +1,38 @@
+---
+interface Props {
+  date: string;
+  title: string;
+  company: string;
+  image: string;
+  tasks: string[];
+  techStack: string[];
+}
+
+const { date, title, company, image, tasks, techStack } = Astro.props;
+---
+<div class="project-card">
+  <!-- Contenedor de la imagen con efecto scroll -->
+  <div class="project-image-wrapper">
+    <img src={image} alt={`Captura de pantalla de ${title}`} class="project-image" loading="lazy" />
+    <div class="project-image-overlay"></div>
+  </div>
+
+  <!-- Detalles del proyecto -->
+  <div class="project-details">
+    <div class="project-header">
+      <span class="project-date">{date}</span>
+      <h3>{title}</h3>
+      <span class="company">{company}</span>
+    </div>
+    <ul>
+      {tasks.map(task => (
+        <li>{task}</li>
+      ))}
+    </ul>
+    <div class="tech-stack">
+      {techStack.map(tech => (
+        <span>{tech}</span>
+      ))}
+    </div>
+  </div>
+</div>

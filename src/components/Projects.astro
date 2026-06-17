@@ -1,0 +1,274 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = [
+  {
+    date: "2026",
+    title: "Diseño y Desarrollo Web",
+    company: "Empresa Agrícola (Freelance)",
+    image: "/images/minerasalcap.webp",
+    tasks: [
+      "Diseñé y desarrollé la plataforma web completa de la empresa, incluyendo una página principal atractiva y un sistema de inicio de sesión seguro.",
+      "Construí un panel de administración (dashboard) interactivo para la visualización y gestión en tiempo real de los procesos agrícolas.",
+      "Desarrollé la interfaz de usuario reactiva utilizando Angular e implementé la lógica del lado del servidor con Node.js.",
+      "Integré Supabase para la base de datos relacional, la autenticación de usuarios y el almacenamiento de datos en la nube.",
+    ],
+    techStack: ["Angular", "Node.js", "Supabase"],
+  },
+  {
+    date: "2024-2025",
+    title: "Desarrollador Full-Stack",
+    company: "CTC",
+    image: "/images/proyecto-ctc.png",
+    tasks: [
+      "Desarrollé la interfaz y las funcionalidades específicas para administrar acuerdos, como crear, modificar, eliminar y exportar registros.",
+      "Creé un sistema de roles de usuario para controlar las acciones del usuario dentro de la aplicación.",
+      "Integré una base de datos que permite un almacenamiento y gestión eficientes de los registros de acuerdo utilizando MySQL.",
+    ],
+    techStack: ["Laravel", "Javascript", "Tailwind CSS", "Git"],
+  },
+  {
+    date: "2023 - 2024",
+    title: "Desarrollador UX/UI",
+    company: "Brydg",
+    image: "/images/proyecto-brydg.png",
+    tasks: [
+      "Diseñé interfaces de usuario intuitivas y visualmente convincentes para la plataforma web.",
+      "Colaboré estrechamente con los equipos de desarrollo y marketing para garantizar la consistencia visual y funcional entre la identidad de la marca y las interfaces de usuario.",
+    ],
+    techStack: ["HTML5", "CSS3", "Figma"],
+  },
+];
+
+const techGroups = {
+  frontend: [
+    "Angular",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Javascript",
+    "Figma",
+    "TypeScript",
+  ],
+  backend: ["Node.js", "Laravel", "Git", "Supabase", "MySQL", "PostgreSQL"],
+};
+---
+
+<section id="projects" class="projects-section">
+  <h2>Proyectos</h2>
+
+  <!-- Botones de filtro agrupados -->
+  <div class="tech-filters" role="group" aria-label="Filtrar proyectos">
+    <!-- Todos -->
+    <button
+      class="group-filter-btn active"
+      data-filter-type="group"
+      data-group="all"
+      aria-pressed="true"
+      id="filter-all"
+    >
+      Todos
+    </button>
+
+    <!-- Frontend -->
+    <div class="filter-group-wrapper">
+      <button
+        class="group-filter-btn"
+        data-filter-type="group"
+        data-group="frontend"
+        aria-pressed="false"
+        id="filter-frontend"
+      >
+        Frontend
+        <svg
+          class="chevron"
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="tech-dropdown" role="group" aria-label="Tecnologías Frontend">
+        {
+          techGroups.frontend.map((tech) => (
+            <button
+              class="tech-pill"
+              data-filter-type="tech"
+              data-tech={tech}
+              aria-pressed="false"
+            >
+              {tech}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Backend -->
+    <div class="filter-group-wrapper">
+      <button
+        class="group-filter-btn"
+        data-filter-type="group"
+        data-group="backend"
+        aria-pressed="false"
+        id="filter-backend"
+      >
+        Backend
+        <svg
+          class="chevron"
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="tech-dropdown" role="group" aria-label="Tecnologías Backend">
+        {
+          techGroups.backend.map((tech) => (
+            <button
+              class="tech-pill"
+              data-filter-type="tech"
+              data-tech={tech}
+              aria-pressed="false"
+            >
+              {tech}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtro activo -->
+  <p class="filter-count" id="filter-count" aria-live="polite"></p>
+
+  <!-- Grid de proyectos -->
+  <div class="projects-container" id="projects-grid">
+    {
+      projects.map((proj, i) => (
+        <div
+          class="project-card-wrapper"
+          data-techs={proj.techStack.join(",")}
+          data-index={i}
+        >
+          <ProjectCard {...proj} />
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Sin resultados -->
+  <p class="no-results" id="no-results" aria-live="polite" hidden>
+    No hay proyectos con esta tecnología aún.
+  </p>
+</section>
+
+<script>
+  const techGroups: Record<string, string[]> = {
+    frontend: [
+      "Angular",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Javascript",
+      "Figma",
+      "TypeScript",
+    ],
+    backend: ["Node.js", "Laravel", "Git", "Supabase", "MySQL", "PostgreSQL"],
+  };
+
+  const groupBtns = document.querySelectorAll<HTMLButtonElement>(
+    '[data-filter-type="group"]',
+  );
+  const techPills = document.querySelectorAll<HTMLButtonElement>(
+    '[data-filter-type="tech"]',
+  );
+  const wrappers = document.querySelectorAll<HTMLElement>(
+    ".project-card-wrapper",
+  );
+  const noResults = document.getElementById("no-results")!;
+  const filterCount = document.getElementById("filter-count")!;
+
+  // Resetea el estado visual de todos los controles
+  const clearActiveState = () => {
+    groupBtns.forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-pressed", "false");
+    });
+    techPills.forEach((p) => {
+      p.classList.remove("active");
+      p.setAttribute("aria-pressed", "false");
+    });
+  };
+
+  // Aplica filtro por grupo (all / frontend / backend)
+  const filterByGroup = (group: string) => {
+    let visible = 0;
+    wrappers.forEach((wrapper) => {
+      const techs = wrapper.dataset.techs?.split(",") ?? [];
+      const matches =
+        group === "all" ||
+        techs.some((t) => (techGroups[group] ?? []).includes(t));
+      wrapper.classList.toggle("hidden", !matches);
+      if (matches) visible++;
+    });
+    noResults.hidden = visible > 0;
+    filterCount.textContent =
+      group === "all"
+        ? ""
+        : `${visible} proyecto${visible !== 1 ? "s" : ""} con tecnologías de ${group}`;
+  };
+
+  // Aplica filtro por tecnología individual
+  const filterByTech = (tech: string) => {
+    let visible = 0;
+    wrappers.forEach((wrapper) => {
+      const techs = wrapper.dataset.techs?.split(",") ?? [];
+      const matches = techs.includes(tech);
+      wrapper.classList.toggle("hidden", !matches);
+      if (matches) visible++;
+    });
+    noResults.hidden = visible > 0;
+    filterCount.textContent = `${visible} proyecto${visible !== 1 ? "s" : ""} con ${tech}`;
+  };
+
+  // Listeners en botones de grupo
+  groupBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      clearActiveState();
+      btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
+      filterByGroup(btn.dataset.group!);
+    });
+  });
+
+  // Listeners en pills individuales
+  techPills.forEach((pill) => {
+    pill.addEventListener("click", (e) => {
+      // Evitar que el click cierre el dropdown (lo mantiene abierto hasta que el mouse se vaya)
+      e.stopPropagation();
+      const tech = pill.dataset.tech!;
+      clearActiveState();
+      pill.classList.add("active");
+      pill.setAttribute("aria-pressed", "true");
+      filterByTech(tech);
+    });
+  });
+
+  // Inicializar
+  filterByGroup("all");
+</script>
