@@ -3,10 +3,28 @@ import ProjectCard from "./ProjectCard.astro";
 
 const projects = [
   {
+    id: "proj-0",
     date: "2026",
     title: "Diseño y Desarrollo Web",
-    company: "Empresa Agrícola (Freelance)",
+    company: "Minerasal Cesar (Freelance)",
     image: "/images/minerasalcap.webp",
+    role: "Full-Stack Developer",
+    githubUrl: "https://github.com/Danirodry/minerasal.git",
+    liveUrl: "",
+    overview:
+      "Plataforma web completa para una empresa agrícola, incluyendo página principal, sistema de autenticación seguro y panel de administración interactivo para la visualización y gestión en tiempo real de procesos agrícolas.",
+    problem:
+      "La empresa carecía de presencia digital y herramientas internas para monitorear sus operaciones. Los datos de campo eran gestionados manualmente, provocando errores y retrasos en la toma de decisiones.",
+    solution:
+      "Diseñé y desarrollé la plataforma desde cero: una landing page atractiva, un sistema de inicio de sesión con roles y un dashboard reactivo que centraliza los datos agrícolas en tiempo real con gráficos y tablas interactivas.",
+    result:
+      "La empresa logró digitalizar sus procesos clave, reduciendo el tiempo de reporte manual en un 70% y mejorando la visibilidad de sus operaciones de campo para el equipo directivo.",
+    deliverables: [
+      "Página principal con identidad visual de la empresa",
+      "Sistema de autenticación con roles de usuario",
+      "Dashboard interactivo con datos en tiempo real",
+      "API REST con Node.js y Supabase",
+    ],
     tasks: [
       "Diseñé y desarrollé la plataforma web completa de la empresa, incluyendo una página principal atractiva y un sistema de inicio de sesión seguro.",
       "Construí un panel de administración (dashboard) interactivo para la visualización y gestión en tiempo real de los procesos agrícolas.",
@@ -16,25 +34,61 @@ const projects = [
     techStack: ["Angular", "Node.js", "Supabase"],
   },
   {
-    date: "2024-2025",
+    id: "proj-1",
+    date: "2024 – 2025",
     title: "Desarrollador Full-Stack",
     company: "CTC",
-    image: "/images/proyecto-ctc.png",
+    image: "/images/ctccap.webp",
+    role: "Full-Stack Developer",
+    githubUrl: "https://github.com/Danirodry/app-gestion-convenios-ctc.git",
+    liveUrl: "",
+    overview:
+      "Sistema de gestión de acuerdos corporativos que permite a equipos crear, modificar, eliminar y exportar registros con control de acceso basado en roles de usuario.",
+    problem:
+      "El equipo gestionaba los acuerdos en hojas de cálculo compartidas, lo que generaba conflictos de versiones, falta de trazabilidad y accesos sin restricciones.",
+    solution:
+      "Desarrollé una aplicación web con Laravel y JavaScript que centraliza los registros en MySQL, con un sistema de roles que controla las acciones disponibles para cada tipo de usuario con una interfaz moderna.",
+    result:
+      "Eliminación completa del uso de hojas de cálculo. El equipo reportó una reducción del 60% en tiempo de búsqueda y gestión de acuerdos, con auditoría de cambios integrada.",
+    deliverables: [
+      "CRUD completo de acuerdos con exportación",
+      "Sistema de roles con control granular de permisos",
+      "Integración con base de datos MySQL",
+      "Interfaz responsive",
+    ],
     tasks: [
       "Desarrollé la interfaz y las funcionalidades específicas para administrar acuerdos, como crear, modificar, eliminar y exportar registros.",
       "Creé un sistema de roles de usuario para controlar las acciones del usuario dentro de la aplicación.",
       "Integré una base de datos que permite un almacenamiento y gestión eficientes de los registros de acuerdo utilizando MySQL.",
     ],
-    techStack: ["Laravel", "Javascript", "Tailwind CSS", "Git"],
+    techStack: ["Laravel", "Javascript", "Filament", "Git"],
   },
   {
-    date: "2023 - 2024",
+    id: "proj-2",
+    date: "2023 – 2024",
     title: "Desarrollador UX/UI",
     company: "Brydg",
     image: "/images/proyecto-brydg.png",
+    role: "UX/UI Designer & Developer",
+    githubUrl: "https://github.com/Danirodry",
+    liveUrl: "https://github.com/Danirodry",
+    overview:
+      "Diseño e implementación de interfaces de usuario para la plataforma web de Brydg, asegurando coherencia visual con la identidad de marca y una experiencia de usuario intuitiva.",
+    problem:
+      "La plataforma existente carecía de consistencia visual y los flujos de usuario no eran intuitivos, generando fricciones durante el onboarding y el uso diario de la herramienta.",
+    solution:
+      "Colaboré con los equipos de desarrollo y marketing para definir un sistema de diseño unificado. Diseñé componentes reutilizables en Figma y los implementé en HTML5/CSS3, mejorando la jerarquía visual y los flujos de navegación.",
+    result:
+      "La plataforma obtuvo una identidad visual coherente y los usuarios reportaron mayor facilidad de uso. El tiempo de onboarding se redujo notablemente gracias a flujos más claros.",
+    deliverables: [
+      "Sistema de diseño en Figma con componentes reutilizables",
+      "Prototipado de alta fidelidad con responsive breakpoints",
+      "Implementación de componentes en HTML5/CSS3",
+      "Documentación de guidelines de diseño",
+    ],
     tasks: [
       "Diseñé interfaces de usuario intuitivas y visualmente convincentes para la plataforma web.",
-      "Colaboré estrechamente con los equipos de desarrollo y marketing para garantizar la consistencia visual y funcional entre la identidad de la marca y las interfaces de usuario.",
+      "Colaboré estrechamente con los equipos de desarrollo y marketing para garantizar la consistencia visual y functional entre la identidad de la marca y las interfaces de usuario.",
     ],
     techStack: ["HTML5", "CSS3", "Figma"],
   },
@@ -45,12 +99,10 @@ const techGroups = {
     "Angular",
     "HTML5",
     "CSS3",
-    "Tailwind CSS",
     "Javascript",
     "Figma",
-    "TypeScript",
   ],
-  backend: ["Node.js", "Laravel", "Git", "Supabase", "MySQL", "PostgreSQL"],
+  backend: ["Node.js", "Laravel", "Git", "Supabase", "Filament"],
 };
 ---
 
@@ -156,7 +208,7 @@ const techGroups = {
   <!-- Filtro activo -->
   <p class="filter-count" id="filter-count" aria-live="polite"></p>
 
-  <!-- Grid de proyectos -->
+  <!-- Grid de proyectos (2 columnas) -->
   <div class="projects-container" id="projects-grid">
     {
       projects.map((proj, i) => (
@@ -164,6 +216,7 @@ const techGroups = {
           class="project-card-wrapper"
           data-techs={proj.techStack.join(",")}
           data-index={i}
+          data-project-id={proj.id}
         >
           <ProjectCard {...proj} />
         </div>
@@ -177,33 +230,156 @@ const techGroups = {
   </p>
 </section>
 
-<script>
-  const techGroups: Record<string, string[]> = {
+<!-- ======== MODAL ======== -->
+<div
+  class="proj-modal-backdrop"
+  id="proj-modal-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  hidden
+>
+  <div class="proj-modal" id="proj-modal">
+    <!-- Cabecera -->
+    <div class="modal-header">
+      <div class="modal-image-wrapper">
+        <img src="" alt="" class="modal-image" id="modal-img" />
+        <div class="modal-image-overlay"></div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Cerrar modal">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg
+        >
+      </button>
+    </div>
+
+    <!-- Contenido scroll -->
+    <div class="modal-body">
+      <!-- Meta info -->
+      <div class="modal-meta-row">
+        <div class="modal-meta-item">
+          <span class="modal-meta-label">Client</span>
+          <span class="modal-meta-value" id="modal-company"></span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-label">Year</span>
+          <span class="modal-meta-value" id="modal-date"></span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-label">Role</span>
+          <span class="modal-meta-value" id="modal-role"></span>
+        </div>
+      </div>
+
+      <!-- Technologies -->
+      <div class="modal-section">
+        <span class="modal-meta-label">Technologies</span>
+        <div class="modal-tech-stack" id="modal-tech"></div>
+      </div>
+
+      <!-- Live link -->
+      <div id="modal-live-wrapper" class="modal-live-link-wrapper">
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener"
+          class="modal-live-link"
+          id="modal-live"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            ></path><polyline points="15 3 21 3 21 9"></polyline><line
+              x1="10"
+              y1="14"
+              x2="21"
+              y2="3"></line></svg
+          >
+          View live site
+        </a>
+      </div>
+
+      <hr class="modal-divider" />
+
+      <!-- Título grande -->
+      <h2 class="modal-title" id="modal-title"></h2>
+
+      <!-- Overview -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Overview</h3>
+        <p class="modal-text" id="modal-overview"></p>
+      </div>
+
+      <!-- Problem -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Problem</h3>
+        <p class="modal-text" id="modal-problem"></p>
+      </div>
+
+      <!-- Solution -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Solution</h3>
+        <p class="modal-text" id="modal-solution"></p>
+      </div>
+
+      <!-- Result -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Result</h3>
+        <p class="modal-text" id="modal-result"></p>
+      </div>
+
+      <!-- Key deliverables -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Key deliverables</h3>
+        <ul class="modal-deliverables" id="modal-deliverables"></ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="modal-cta">
+        <p class="modal-cta-text">¿Interesado en un proyecto similar?</p>
+        <a href="#contact" class="modal-cta-btn" id="modal-cta-contact"
+          >Hablemos</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ projects }}>
+  const techGroups = {
     frontend: [
       "Angular",
       "HTML5",
       "CSS3",
-      "Tailwind CSS",
       "Javascript",
       "Figma",
-      "TypeScript",
     ],
-    backend: ["Node.js", "Laravel", "Git", "Supabase", "MySQL", "PostgreSQL"],
+    backend: ["Node.js", "Laravel", "Git", "Supabase", "Filament"],
   };
 
-  const groupBtns = document.querySelectorAll<HTMLButtonElement>(
-    '[data-filter-type="group"]',
-  );
-  const techPills = document.querySelectorAll<HTMLButtonElement>(
-    '[data-filter-type="tech"]',
-  );
-  const wrappers = document.querySelectorAll<HTMLElement>(
-    ".project-card-wrapper",
-  );
-  const noResults = document.getElementById("no-results")!;
-  const filterCount = document.getElementById("filter-count")!;
+  // ---- Filtros ----
+  const groupBtns = document.querySelectorAll('[data-filter-type="group"]');
+  const techPills = document.querySelectorAll('[data-filter-type="tech"]');
+  const wrappers = document.querySelectorAll(".project-card-wrapper");
+  const noResults = document.getElementById("no-results");
+  const filterCount = document.getElementById("filter-count");
 
-  // Resetea el estado visual de todos los controles
   const clearActiveState = () => {
     groupBtns.forEach((b) => {
       b.classList.remove("active");
@@ -215,8 +391,7 @@ const techGroups = {
     });
   };
 
-  // Aplica filtro por grupo (all / frontend / backend)
-  const filterByGroup = (group: string) => {
+  const filterByGroup = (group) => {
     let visible = 0;
     wrappers.forEach((wrapper) => {
       const techs = wrapper.dataset.techs?.split(",") ?? [];
@@ -233,8 +408,7 @@ const techGroups = {
         : `${visible} proyecto${visible !== 1 ? "s" : ""} con tecnologías de ${group}`;
   };
 
-  // Aplica filtro por tecnología individual
-  const filterByTech = (tech: string) => {
+  const filterByTech = (tech) => {
     let visible = 0;
     wrappers.forEach((wrapper) => {
       const techs = wrapper.dataset.techs?.split(",") ?? [];
@@ -246,22 +420,19 @@ const techGroups = {
     filterCount.textContent = `${visible} proyecto${visible !== 1 ? "s" : ""} con ${tech}`;
   };
 
-  // Listeners en botones de grupo
   groupBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       clearActiveState();
       btn.classList.add("active");
       btn.setAttribute("aria-pressed", "true");
-      filterByGroup(btn.dataset.group!);
+      filterByGroup(btn.dataset.group);
     });
   });
 
-  // Listeners en pills individuales
   techPills.forEach((pill) => {
     pill.addEventListener("click", (e) => {
-      // Evitar que el click cierre el dropdown (lo mantiene abierto hasta que el mouse se vaya)
       e.stopPropagation();
-      const tech = pill.dataset.tech!;
+      const tech = pill.dataset.tech;
       clearActiveState();
       pill.classList.add("active");
       pill.setAttribute("aria-pressed", "true");
@@ -269,6 +440,105 @@ const techGroups = {
     });
   });
 
-  // Inicializar
   filterByGroup("all");
+
+  // ---- Modal ----
+  const backdrop = document.getElementById("proj-modal-backdrop");
+  const modalClose = document.getElementById("modal-close");
+
+  const modalImg = document.getElementById("modal-img");
+  const modalCompany = document.getElementById("modal-company");
+  const modalDate = document.getElementById("modal-date");
+  const modalRole = document.getElementById("modal-role");
+  const modalTech = document.getElementById("modal-tech");
+  const modalLiveWrapper = document.getElementById("modal-live-wrapper");
+  const modalLive = document.getElementById("modal-live");
+  const modalTitle = document.getElementById("modal-title");
+  const modalOverview = document.getElementById("modal-overview");
+  const modalProblem = document.getElementById("modal-problem");
+  const modalSolution = document.getElementById("modal-solution");
+  const modalResult = document.getElementById("modal-result");
+  const modalDeliverables = document.getElementById("modal-deliverables");
+
+  const openModal = (proj) => {
+    // Rellenar datos
+    modalImg.src = proj.image;
+    modalImg.alt = `Captura de ${proj.title}`;
+    modalCompany.textContent = proj.company;
+    modalDate.textContent = proj.date;
+    modalRole.textContent = proj.role ?? "—";
+    modalTitle.textContent = proj.title;
+    modalOverview.textContent = proj.overview ?? "";
+    modalProblem.textContent = proj.problem ?? "";
+    modalSolution.textContent = proj.solution ?? "";
+    modalResult.textContent = proj.result ?? "";
+
+    // Tech stack
+    modalTech.innerHTML = "";
+    (proj.techStack ?? []).forEach((t) => {
+      const s = document.createElement("span");
+      s.textContent = t;
+      modalTech.appendChild(s);
+    });
+
+    // Deliverables
+    modalDeliverables.innerHTML = "";
+    (proj.deliverables ?? []).forEach((d) => {
+      const li = document.createElement("li");
+      li.textContent = d;
+      modalDeliverables.appendChild(li);
+    });
+
+    // Live link
+    if (proj.liveUrl) {
+      modalLive.href = proj.liveUrl;
+      modalLiveWrapper.style.display = "block";
+    } else {
+      modalLiveWrapper.style.display = "none";
+    }
+
+    // Show
+    backdrop.hidden = false;
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => backdrop.classList.add("open"));
+  };
+
+  const closeModal = () => {
+    backdrop.classList.remove("open");
+    backdrop.addEventListener(
+      "transitionend",
+      () => {
+        backdrop.hidden = true;
+        document.body.style.overflow = "";
+      },
+      { once: true },
+    );
+  };
+
+  // Abrir modal al hacer click en la card
+  document.querySelectorAll(".project-card").forEach((card) => {
+    const handler = () => {
+      const wrapper = card.closest("[data-project-id]");
+      if (!wrapper) return;
+      const id = wrapper.dataset.projectId;
+      const proj = projects.find((p) => p.id === id);
+      if (proj) openModal(proj);
+    };
+    card.addEventListener("click", handler);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handler();
+      }
+    });
+  });
+
+  // Cerrar modal
+  modalClose.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !backdrop.hidden) closeModal();
+  });
 </script>

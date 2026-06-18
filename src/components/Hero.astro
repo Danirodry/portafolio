@@ -6,22 +6,33 @@
     <!-- Columna de Texto -->
     <div class="hero-text">
         <!-- Boton open to work -->
-        <div class="tag-box">
+        <!-- <div class="tag-box">
             <a
                 href="https://www.linkedin.com/in/daniel-rodriguez-barbosa-09552126b"
                 class="tag"
                 target="_blank">Open to work</a
             >
-        </div>
+        </div> -->
 
         <h1>
-            FRONT-END <br /> DEVELOPER
+            SOFTWARE <br /> ENGINEER
         </h1>
 
+        <div class="soft-skills-wrapper">
+            <span class="soft-skills-prefix">Me caracterizo por:</span>
+            <div class="soft-skills-ticker">
+                <span class="soft-skill active">Trabajo en equipo</span>
+                <span class="soft-skill">Comunicación asertiva</span>
+                <span class="soft-skill">Proactividad</span>
+                <span class="soft-skill">Aprendizaje continuo</span>
+                <span class="soft-skill">Adaptación a nuevas herramientas</span>
+            </div>
+        </div>
+
         <p class="description">
-            ¡Hola! Soy <b>Daniel Rodriguez</b>, un desarrollador web con 2 años
-            de experiencia. Me apasiona resolver problemas del mundo real con
-            soluciones tecnológicas eficientes y escalables.
+            ¡Hola! Soy <b>Daniel Rodriguez</b>, con 2 años de experiencia
+            pasando ideas a productos digitales. Me apasiona resolver problemas
+            del mundo real con soluciones tecnológicas eficientes y escalables.
         </p>
 
         <div id="contact" class="social-links">
@@ -105,10 +116,10 @@
 <script>
     // Oculta el logotipo de Spline usando MutationObserver (sin polling)
     const hideLogo = (shadowRoot: ShadowRoot) => {
-        if (shadowRoot.querySelector('#anti-spline-style')) return;
+        if (shadowRoot.querySelector("#anti-spline-style")) return;
 
-        const style = document.createElement('style');
-        style.id = 'anti-spline-style';
+        const style = document.createElement("style");
+        style.id = "anti-spline-style";
         style.innerHTML = `
             #logo,
             a[href*="spline.design"],
@@ -121,13 +132,13 @@
         `;
         shadowRoot.appendChild(style);
 
-        const logo = shadowRoot.querySelector('#logo');
-        if (logo) logo.setAttribute('style', 'display:none!important');
+        const logo = shadowRoot.querySelector("#logo");
+        if (logo) logo.setAttribute("style", "display:none!important");
         const link = shadowRoot.querySelector('a[href*="spline"]');
-        if (link) link.setAttribute('style', 'display:none!important');
+        if (link) link.setAttribute("style", "display:none!important");
     };
 
-    const viewer = document.querySelector('spline-viewer');
+    const viewer = document.querySelector("spline-viewer");
     if (viewer) {
         // Si el shadowRoot ya existe, actuar de inmediato
         if (viewer.shadowRoot) {
@@ -139,12 +150,123 @@
             if (viewer.shadowRoot) {
                 hideLogo(viewer.shadowRoot);
                 // Observar cambios dentro del shadowRoot también
-                const innerObserver = new MutationObserver(() => hideLogo(viewer.shadowRoot!));
-                innerObserver.observe(viewer.shadowRoot, { childList: true, subtree: true });
+                const innerObserver = new MutationObserver(() =>
+                    hideLogo(viewer.shadowRoot!),
+                );
+                innerObserver.observe(viewer.shadowRoot, {
+                    childList: true,
+                    subtree: true,
+                });
                 observer.disconnect();
             }
         });
-        observer.observe(viewer, { childList: true, subtree: true, attributes: true });
+        observer.observe(viewer, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+        });
+    }
+
+    // Animación de Soft Skills rotativas
+    const skills = document.querySelectorAll(".soft-skill");
+    if (skills.length > 0) {
+        let current = 0;
+        setInterval(() => {
+            const prev = skills[current];
+            prev.classList.remove("active");
+            prev.classList.add("exit");
+
+            current = (current + 1) % skills.length;
+            const next = skills[current];
+            next.classList.remove("exit");
+            next.classList.add("active");
+
+            setTimeout(() => {
+                prev.classList.remove("exit");
+            }, 600);
+        }, 2000);
     }
 </script>
 
+<style>
+    .soft-skills-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        margin: 0.5rem 0 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        .soft-skills-wrapper {
+            align-items: flex-start;
+        }
+    }
+
+    .soft-skills-prefix {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 600;
+    }
+
+    @media (min-width: 768px) {
+        .soft-skills-prefix {
+            font-size: 0.88rem;
+        }
+    }
+
+    .soft-skills-ticker {
+        position: relative;
+        height: 2.2rem;
+        width: 100%;
+    }
+
+    .soft-skill {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(12px) scale(0.96);
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #34d399;
+        text-shadow: 0 0 12px rgba(52, 211, 153, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        transition:
+            opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .soft-skill.active {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    .soft-skill.exit {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-12px) scale(0.96);
+    }
+
+    @media (min-width: 1024px) {
+        .soft-skill {
+            left: 0;
+            transform: translateY(12px) scale(0.96);
+            transform-origin: left center;
+        }
+        .soft-skill.active {
+            transform: translateY(0) scale(1);
+        }
+        .soft-skill.exit {
+            transform: translateY(-12px) scale(0.96);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .soft-skill {
+            font-size: 1.35rem;
+        }
+    }
+</style>
