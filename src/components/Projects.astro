@@ -3,6 +3,66 @@ import ProjectCard from "./ProjectCard.astro";
 
 const projects = [
   {
+    id: "proj-imgrar",
+    date: "2026",
+    title: "Imgrar",
+    company: "Personal",
+    image: "/images/imgrar.webp",
+    role: "Front-End Developer",
+    githubUrl: "https://github.com/Danirodry/imgrar.git",
+    liveUrl: "",
+    overview:
+      "Aplicación web de utilidad para la optimización, compresión y conversión de formatos de imágenes localmente en el navegador, protegiendo la privacidad del usuario.",
+    problem:
+      "Los usuarios necesitan optimizar y convertir imágenes rápidamente, pero subir archivos a servidores de terceros plantea riesgos de privacidad y lentitud en la carga.",
+    solution:
+      "Diseñé e implementé Imgrar, una aplicación SPA que procesa las imágenes localmente en el cliente usando APIs nativas del navegador, permitiendo compresión y conversión instantánea.",
+    result:
+      "Una herramienta segura e instantánea que reduce el peso de las imágenes hasta en un 80% sin pérdida perceptible de calidad visual.",
+    deliverables: [
+      "Compresión de imágenes ajustable en tiempo real",
+      "Conversión de formatos (PNG, JPEG, WebP, AVIF)",
+      "Procesamiento 100% local en el navegador",
+      "Interfaz Drag & Drop intuitiva",
+    ],
+    tasks: [
+      "Diseñé e implementé una interfaz limpia y minimalista con vista previa de antes/después del procesamiento.",
+      "Desarrollé la lógica de conversión y redimensionamiento en el cliente usando Canvas API.",
+      "Optimicé la descarga por lotes y la gestión del almacenamiento en caché del navegador.",
+    ],
+    techStack: ["HTML", "Javascript", "CSS3"],
+  },
+  {
+    id: "proj-panglish",
+    date: "2026",
+    title: "Panglish",
+    company: "Personal",
+    image: "",
+    role: "Full-Stack Developer",
+    githubUrl: "https://github.com/Danirodry/panglish.git",
+    liveUrl: "",
+    overview:
+      "Plataforma interactiva para el aprendizaje y práctica del idioma inglés, que ofrece lecciones dinámicas, autoevaluaciones en tiempo real y herramientas de traducción contextual.",
+    problem:
+      "Los estudiantes de inglés a menudo carecen de herramientas interactivas y accesibles para practicar vocabulario y gramática con retroalimentación inmediata.",
+    solution:
+      "Desarrollé la interfaz web completa de Panglish, implementando módulos de aprendizaje interactivos, cuestionarios reactivos con validación de respuestas instantánea y una experiencia de usuario limpia y minimalista.",
+    result:
+      "Una plataforma ágil y atractiva que fomenta el autoaprendizaje y facilita la retención del idioma mediante retos interactivos.",
+    deliverables: [
+      "Interfaz de usuario responsive y adaptativa",
+      "Módulos interactivos para práctica de vocabulario",
+      "Sistema de cuestionarios con retroalimentación inmediata",
+      "Arquitectura de componentes reutilizables",
+    ],
+    tasks: [
+      "Diseñé e implementé la interfaz de usuario moderna con enfoque responsive y excelente legibilidad.",
+      "Desarrollé la lógica de evaluación de respuestas y el sistema de puntuación del usuario.",
+      "Optimicé el rendimiento frontend para asegurar transiciones rápidas y fluidas entre lecciones.",
+    ],
+    techStack: ["Astro", "Javascript", "CSS3"],
+  },
+  {
     id: "proj-0",
     date: "2026",
     title: "Diseño y Desarrollo Web",
@@ -95,14 +155,8 @@ const projects = [
 ];
 
 const techGroups = {
-  frontend: [
-    "Angular",
-    "HTML5",
-    "CSS3",
-    "Javascript",
-    "Figma",
-  ],
-  backend: ["Node.js", "Laravel", "Git", "Supabase", "Filament"],
+  frontend: ["Angular", "React", "Javascript", "Figma"],
+  backend: ["Node.js", "Laravel", "Supabase", "Filament"],
 };
 ---
 
@@ -363,13 +417,7 @@ const techGroups = {
 
 <script define:vars={{ projects }}>
   const techGroups = {
-    frontend: [
-      "Angular",
-      "HTML5",
-      "CSS3",
-      "Javascript",
-      "Figma",
-    ],
+    frontend: ["Angular", "HTML5", "CSS3", "Javascript", "Figma"],
     backend: ["Node.js", "Laravel", "Git", "Supabase", "Filament"],
   };
 

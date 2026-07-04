@@ -34,14 +34,10 @@ const {
 			<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
 		</noscript>
 
-		<!-- Spline Viewer — los módulos ES son diferidos por defecto (no bloquean el render) -->
-		<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.98/build/spline-viewer.js"></script>
+
 	</head>
 	<body>
 		<div class="container">
-			<!-- Efecto de fondo con gradiente y blur — imagen decorativa -->
-			<img class="image-gradient" src="/gradient.png" alt="" aria-hidden="true" />
-			<div class="layer-blur" aria-hidden="true"></div>
 			<slot />
 		</div>
 	</body>

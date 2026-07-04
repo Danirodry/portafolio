@@ -44,29 +44,7 @@ main {
   /* Ajusta este valor según la altura de tu header */
 }
 
-/* --- EFECTOS DE FONDO --- */
-.image-gradient {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0.7;
-  z-index: -1;
-}
 
-.layer-blur {
-  width: 30rem;
-  height: 30rem;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  background: radial-gradient(ellipse at center, rgba(200, 200, 200, 0.15) 0%, transparent 70%);
-  filter: blur(80px);
-  border-radius: 50%;
-  rotate: -30deg;
-  z-index: -1;
-  will-change: transform;
-  pointer-events: none;
-}
 
 /* ------------------------ ENCABEZADO Y NAVEGACIÓN ------------------------- */
 header {
@@ -90,10 +68,19 @@ header {
   height: 60px;
   gap: 2rem;
   padding: 0.5rem 1.5rem;
+  background: rgba(20, 20, 20, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
   background: rgba(20, 20, 20, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -152,8 +139,7 @@ main {
 
 
 .hero-text h1 {
-  font-size: 2.25rem;
-  /* 36px */
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -197,16 +183,14 @@ main {
   height: 1.5rem;
 }
 
-.hero-spline {
+.vercel-chip-scene {
   width: 100%;
-  height: 24rem;
-  /* 384px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
 }
 
-.hero-spline spline-viewer {
-  width: 100%;
-  height: 100%;
-}
 
 /* -------------------------- FILTROS DE TECNOLOGÍA --------------------------- */
 
@@ -369,6 +353,13 @@ main {
 /* --------------------------- SECCIÓN DE PROYECTOS ------------------------------ */
 .projects-section {
   padding-top: 6rem;
+  position: relative;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(5, 5, 5, 0.5) 15%,
+      rgba(5, 5, 5, 0.95) 45%,
+      #050505 80%,
+      #050505 100%);
 }
 
 .projects-section h2,
@@ -873,8 +864,10 @@ main {
 /* --------------------------- SECCIÓN SOBRE MÍ ------------------------------ */
 .about-section {
   padding-top: 6rem;
-  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  background-color: #050505;
 }
+
 
 .about-container {
   display: grid;
@@ -995,9 +988,10 @@ footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top: 1px solid rgb(55, 65, 81);
-  margin-top: 4rem;
+  margin-top: 0;
   color: rgb(107, 114, 128);
   font-size: 0.875rem;
+  background-color: #050505;
 }
 
 /* ---------------------- MEDIA QUERIES PARA RESPONSIVE DESIGN -------------------------- */
@@ -1016,9 +1010,9 @@ footer {
     z-index: 2;
   }
 
-  .hero-spline {
+  .vercel-chip-scene {
     width: 100%;
-    height: 380px;
+    max-width: 380px;
     margin: 0 auto;
   }
 
@@ -1058,8 +1052,7 @@ footer {
   }
 
   .hero-text h1 {
-    font-size: 3.75rem;
-    /* 60px */
+    font-size: 2.75rem;
   }
 
   .description {
@@ -1091,28 +1084,5 @@ footer {
   .container {
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .hero-section {
-    flex-direction: row;
-  }
-
-  .hero-text {
-    width: 50%;
-    text-align: left;
-  }
-
-  .description {
-    margin-left: 0;
-  }
-
-  .social-links {
-    justify-content: flex-start;
-  }
-
-  .hero-spline {
-    width: 50%;
-    height: auto;
-    aspect-ratio: 1 / 1;
   }
 }

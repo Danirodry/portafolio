@@ -1,11 +1,34 @@
 ---
+
 ---
+
 <header id="header">
     <nav class="navbar">
         <a href="#">HOME</a>
         <a href="#projects">PROYECTOS</a>
-        <a href="#about">SOBRE MÍ</a>
-        <a href="mailto:jdannielrb@gmail.com?subject=Contacto%20desde%20Portafolio&body=Hola%20Daniel,"
-            title="Gmail" class="contact-button">CONTACTO</a>
+        <a
+            href="mailto:jdanirb@outlook.com?subject=Contacto%20desde%20Portafolio&body=Hola%20Daniel,"
+            title="Gmail"
+            class="contact-button">CONTACTO</a
+        >
     </nav>
 </header>
+
+<script>
+    const navbar = document.querySelector(".navbar");
+
+    // Función para manejar el estado del scroll
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            navbar?.classList.add("scrolled");
+        } else {
+            navbar?.classList.remove("scrolled");
+        }
+    };
+
+    // Escuchar scroll
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Ejecutar una vez al cargar por si la página ya está abajo
+    handleScroll();
+</script>

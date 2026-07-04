@@ -34,140 +34,77 @@
             pasando ideas a productos digitales. Me apasiona resolver problemas
             del mundo real con soluciones tecnológicas eficientes y escalables.
         </p>
-
-        <div id="contact" class="social-links">
-            <a
-                href="mailto:jdannielrb@gmail.com?subject=Contacto%20desde%20Portafolio&body=Hola%20Daniel,"
-                title="Gmail"
-                class="social-icon"
-            >
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                        d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
-                    ></path>
-                    <path d="M3 7l9 6l9 -6"></path>
-                </svg>
-            </a>
-            <a
-                href="https://www.linkedin.com/in/daniel-rodriguez-barbosa-09552126b"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="LinkedIn"
-                class="social-icon"
-            >
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                        d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
-                    ></path>
-                    <path d="M8 11l0 5"></path>
-                    <path d="M8 8l0 .01"></path>
-                    <path d="M12 16l0 -5"></path>
-                    <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
-                </svg>
-            </a>
-            <a
-                href="https://github.com/Danirodry"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub"
-                class="social-icon"
-            >
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                        d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-                    ></path>
-                </svg>
-            </a>
-        </div>
     </div>
 
-    <!-- Columna de Gráfico 3D (Spline) -->
-    <div class="hero-spline">
-        <spline-viewer
-            url="https://prod.spline.design/2oMQ7FKLkW3WKJ6o/scene.splinecode"
-        ></spline-viewer>
+    <!-- Escena triángulo estilo Vercel -->
+    <div class="v-wrap">
+        <div
+            class="v-scene"
+            id="vScene"
+            role="button"
+            aria-label="Triángulo interactivo, click para cambiar de modo"
+            tabindex="0"
+        >
+            <div class="v-glow-wrap">
+                <div class="v-glow v-glow-lava"></div>
+                <div class="v-glow v-glow-rgb"></div>
+            </div>
+            <div class="v-glow v-side v-side-a" aria-hidden="true"></div>
+            <div class="v-glow v-side v-side-b" aria-hidden="true"></div>
+            <div class="v-glow v-side v-side-c" aria-hidden="true"></div>
+            <div class="v-triangle" aria-hidden="true"></div>
+        </div>
+
+        <div class="v-texts">
+            <article class="v-text-item" data-vside="a" tabindex="0">
+                <h3>EDUCACION</h3>
+                <div class="v-reveal">
+                    <ul>
+                        <li>
+                            <strong>Ingeniería Multimedia</strong>
+                            <p>Universidad Simon Bolivar | 2019 - 2025</p>
+                        </li>
+                        <li>
+                            <strong>Bootcamp Programacion</strong>
+                            <p>OrienteTech | 2024</p>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            <article class="v-text-item" data-vside="b" tabindex="0">
+                <h3>DESARROLLO / AI</h3>
+                <div class="v-reveal">
+                    <ul>
+                        <li>Single Page Applications (SPAs)</li>
+                        <li>Landing pages y business websites</li>
+                        <li>Portfolio websites</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="v-text-item" data-vside="c" tabindex="0">
+                <h3>UX / UI</h3>
+                <div class="v-reveal">
+                    <ul>
+                        <li>Diseño de interfaz con Figma &amp; Canva</li>
+                        <li>UX research &amp; improvements</li>
+                        <li>Prototipado para Webs y Mobile apps</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
     </div>
 </div>
 
+<div class="v-grain" aria-hidden="true"></div>
+
 <script>
-    // Oculta el logotipo de Spline usando MutationObserver (sin polling)
-    const hideLogo = (shadowRoot: ShadowRoot) => {
-        if (shadowRoot.querySelector("#anti-spline-style")) return;
-
-        const style = document.createElement("style");
-        style.id = "anti-spline-style";
-        style.innerHTML = `
-            #logo,
-            a[href*="spline.design"],
-            a[href*="spline"] {
-                display: none !important;
-                opacity: 0 !important;
-                visibility: hidden !important;
-                pointer-events: none !important;
-            }
-        `;
-        shadowRoot.appendChild(style);
-
-        const logo = shadowRoot.querySelector("#logo");
-        if (logo) logo.setAttribute("style", "display:none!important");
-        const link = shadowRoot.querySelector('a[href*="spline"]');
-        if (link) link.setAttribute("style", "display:none!important");
-    };
-
-    const viewer = document.querySelector("spline-viewer");
-    if (viewer) {
-        // Si el shadowRoot ya existe, actuar de inmediato
-        if (viewer.shadowRoot) {
-            hideLogo(viewer.shadowRoot);
-        }
-
-        // MutationObserver para detectar cuándo se crea el shadowRoot
-        const observer = new MutationObserver(() => {
-            if (viewer.shadowRoot) {
-                hideLogo(viewer.shadowRoot);
-                // Observar cambios dentro del shadowRoot también
-                const innerObserver = new MutationObserver(() =>
-                    hideLogo(viewer.shadowRoot!),
-                );
-                innerObserver.observe(viewer.shadowRoot, {
-                    childList: true,
-                    subtree: true,
-                });
-                observer.disconnect();
-            }
-        });
-        observer.observe(viewer, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-        });
+    // Evitar que el navegador mantenga el scroll abajo al recargar la página
+    if (history.scrollRestoration) {
+        history.scrollRestoration = "manual";
     }
+    window.scrollTo(0, 0);
 
-    // Animación de Soft Skills rotativas
+    // ── Soft Skills Ticker ────────────────────────────────────────────────────
     const skills = document.querySelectorAll(".soft-skill");
     if (skills.length > 0) {
         let current = 0;
@@ -175,20 +112,122 @@
             const prev = skills[current];
             prev.classList.remove("active");
             prev.classList.add("exit");
-
             current = (current + 1) % skills.length;
             const next = skills[current];
             next.classList.remove("exit");
             next.classList.add("active");
-
-            setTimeout(() => {
-                prev.classList.remove("exit");
-            }, 600);
+            setTimeout(() => prev.classList.remove("exit"), 600);
         }, 2000);
+    }
+
+    // ── Vercel Triangle — mouse glow ─────────────────────────────────────────
+    const vScene = document.getElementById("vScene");
+    const vRoot = document.documentElement;
+
+    if (vScene) {
+        let textHoverSide: string | null | undefined = null;
+        let mouseHoverSide: string | null = null;
+
+        function updateLitSide() {
+            ["a", "b", "c"].forEach((s) => {
+                vScene?.classList.remove("t-lit-" + s);
+                vScene?.classList.remove("m-lit-" + s);
+            });
+            if (textHoverSide) {
+                vScene?.classList.add("t-lit-" + textHoverSide);
+            }
+            if (mouseHoverSide) {
+                vScene?.classList.add("m-lit-" + mouseHoverSide);
+            }
+
+            // Sync active class to text items
+            const activeSide = textHoverSide || mouseHoverSide;
+            document.querySelectorAll(".v-text-item").forEach((item) => {
+                const side = (item as HTMLElement).dataset.vside;
+                if (activeSide && side === activeSide) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
+            });
+        }
+
+        window.addEventListener("pointermove", (e: PointerEvent) => {
+            const r = vScene.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = e.clientX - cx;
+            const dy = e.clientY - cy;
+            const dist = Math.hypot(dx, dy);
+            const maxDist = 560;
+            const p = Math.max(0, 1 - dist / maxDist);
+            const len = Math.min(dist, 55);
+            const ang = Math.atan2(dy, dx);
+            vRoot.style.setProperty(
+                "--vgx",
+                (Math.cos(ang) * len * p).toFixed(1) + "px",
+            );
+            vRoot.style.setProperty(
+                "--vgy",
+                (Math.sin(ang) * len * p).toFixed(1) + "px",
+            );
+            vRoot.style.setProperty("--vglow-p", (0.55 + p * 0.45).toFixed(3));
+
+            // Iluminar lado más cercano al mouse
+            if (dist < 180) {
+                if (ang >= Math.PI / 6 && ang < (5 * Math.PI) / 6)
+                    mouseHoverSide = "c";
+                else if (ang >= -Math.PI / 2 && ang < Math.PI / 6)
+                    mouseHoverSide = "b";
+                else mouseHoverSide = "a";
+            } else {
+                mouseHoverSide = null;
+            }
+            updateLitSide();
+        });
+
+        // Click → toggle RGB / lava
+        vScene.addEventListener("click", () => vScene.classList.toggle("vrgb"));
+        vScene.addEventListener("keydown", (e: KeyboardEvent) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                vScene.classList.toggle("vrgb");
+            }
+        });
+
+        // Hover texts → iluminar lado del triángulo
+        document.querySelectorAll(".v-text-item").forEach((item) => {
+            const side = (item as HTMLElement).dataset.vside;
+            const on = () => {
+                textHoverSide = side;
+                updateLitSide();
+            };
+            const off = () => {
+                textHoverSide = null;
+                updateLitSide();
+            };
+            item.addEventListener("mouseenter", on);
+            item.addEventListener("mouseleave", off);
+            item.addEventListener("focus", on);
+            item.addEventListener("blur", off);
+        });
     }
 </script>
 
 <style>
+    /* ── CSS custom props para el glow del triángulo ── */
+    :root {
+        --vgx: 0px;
+        --vgy: 0px;
+        --vglow-p: 0.6;
+        --vpink: #ff2d78;
+        --vblue: #2f7cff;
+        --vgreen: #16c95e;
+    }
+
+    /* ============================================================
+       SOFT SKILLS TICKER
+    ============================================================ */
     .soft-skills-wrapper {
         display: flex;
         flex-direction: column;
@@ -197,24 +236,12 @@
         margin: 0.5rem 0 1.5rem;
     }
 
-    @media (min-width: 1024px) {
-        .soft-skills-wrapper {
-            align-items: flex-start;
-        }
-    }
-
     .soft-skills-prefix {
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.15em;
         color: rgba(255, 255, 255, 0.45);
         font-weight: 600;
-    }
-
-    @media (min-width: 768px) {
-        .soft-skills-prefix {
-            font-size: 0.88rem;
-        }
     }
 
     .soft-skills-ticker {
@@ -226,7 +253,8 @@
     .soft-skill {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%) translateY(12px) scale(0.96);
+        top: 50%;
+        transform: translate(-50%, -50%) translateY(12px) scale(0.96);
         font-size: 1.15rem;
         font-weight: 600;
         color: #34d399;
@@ -241,32 +269,398 @@
 
     .soft-skill.active {
         opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translate(-50%, -50%) translateY(0) scale(1);
         pointer-events: auto;
     }
 
     .soft-skill.exit {
         opacity: 0;
-        transform: translateX(-50%) translateY(-12px) scale(0.96);
-    }
-
-    @media (min-width: 1024px) {
-        .soft-skill {
-            left: 0;
-            transform: translateY(12px) scale(0.96);
-            transform-origin: left center;
-        }
-        .soft-skill.active {
-            transform: translateY(0) scale(1);
-        }
-        .soft-skill.exit {
-            transform: translateY(-12px) scale(0.96);
-        }
+        transform: translate(-50%, -50%) translateY(-12px) scale(0.96);
     }
 
     @media (min-width: 768px) {
+        .soft-skills-wrapper {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .soft-skills-prefix {
+            font-size: 0.88rem;
+        }
+
+        .soft-skills-ticker {
+            width: 100%;
+            text-align: center;
+            height: 2.2rem;
+        }
+
         .soft-skill {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) translateY(12px) scale(0.96);
+            transform-origin: center center;
             font-size: 1.35rem;
         }
+
+        .soft-skill.active {
+            transform: translate(-50%, -50%) translateY(0) scale(1);
+        }
+
+        .soft-skill.exit {
+            transform: translate(-50%, -50%) translateY(-12px) scale(0.96);
+        }
+    }
+
+    /* ============================================================
+       VTRIANGLE SCENE
+    ============================================================ */
+
+    /* Wrapper que centra la escena en la columna derecha */
+    .v-wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        padding: 2rem 0;
+    }
+
+    /* ── Escena ── */
+    .v-scene {
+        position: relative;
+        width: 320px;
+        height: 285px;
+        cursor: pointer;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+        flex-shrink: 0;
+
+        /* Default (white lava glow) */
+        --glow-bg: radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.4) 30%,
+            #ffffff 60%,
+            rgba(255, 255, 255, 0.2) 90%
+        );
+        --glow-blur: 20px;
+        --glow-brightness: 1.3;
+        --glow-saturate: 1;
+        --glow-anim-duration: 7s;
+    }
+
+    .v-scene.vrgb {
+        /* RGB mode */
+        --glow-bg: conic-gradient(
+            from 0deg at 50% 42%,
+            #7dc4ff 0%,
+            #2f7cff 16%,
+            #19e0c0 38%,
+            #16c95e 50%,
+            #12b981 56%,
+            #ff4d4d 70%,
+            #ff2d78 82%,
+            #ff7ad9 92%,
+            #7dc4ff 100%
+        );
+        --glow-blur: 22px;
+        --glow-brightness: 1.35;
+        --glow-saturate: 1.4;
+        --glow-anim-duration: 9s;
+    }
+
+    .v-triangle,
+    .v-glow {
+        position: absolute;
+        inset: 0;
+    }
+
+    /* El clip-path va en el ::before para que el blur del padre se desborde */
+    .v-glow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        clip-path: polygon(50% 2%, 2% 98%, 98% 98%);
+        background: var(--glow-bg);
+    }
+
+    .v-triangle {
+        background: #000;
+        clip-path: polygon(50% 2%, 2% 98%, 98% 98%);
+        z-index: 3;
+    }
+
+    /* ── Capa que sigue al mouse ── */
+    .v-glow-wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        transform: translate(var(--vgx), var(--vgy));
+        transition: transform 0.18s ease-out;
+    }
+
+    /* Halo ambiental difuso */
+    .v-glow-wrap::before,
+    .v-glow-wrap::after {
+        content: "";
+        position: absolute;
+        inset: -55%;
+        border-radius: 50%;
+        pointer-events: none;
+        transition: opacity 0.6s ease;
+        animation: v-lava-soft 9s ease-in-out infinite alternate;
+    }
+
+    /* Halo blanco por defecto */
+    .v-glow-wrap::before {
+        background: radial-gradient(
+            circle at 50% 48%,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0.14) 35%,
+            transparent 65%
+        );
+        opacity: var(--vglow-p);
+    }
+
+    /* Halo RGB */
+    .v-glow-wrap::after {
+        background: conic-gradient(
+            from 0deg at 50% 48%,
+            #7dc4ff 0%,
+            #2f7cff 18%,
+            #19e0c0 38%,
+            #16c95e 52%,
+            #ff4d4d 70%,
+            #ff2d78 84%,
+            #ff7ad9 93%,
+            #7dc4ff 100%
+        );
+        -webkit-mask-image: radial-gradient(
+            circle at 50% 48%,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.3) 35%,
+            transparent 65%
+        );
+        mask-image: radial-gradient(
+            circle at 50% 48%,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.3) 35%,
+            transparent 65%
+        );
+        filter: blur(40px) saturate(1.3);
+        opacity: 0;
+    }
+
+    /* ── Glow blanco de borde con animación lava ── */
+    .v-glow-lava {
+        filter: blur(var(--glow-blur)) brightness(var(--glow-brightness));
+        opacity: var(--vglow-p);
+        transition: opacity 0.6s ease;
+    }
+    .v-glow-lava::before {
+        background-size: 250% 250%;
+        animation: v-lava-bg var(--glow-anim-duration) ease-in-out infinite
+            alternate;
+    }
+
+    /* ── Glow RGB de borde (modo click) ── */
+    .v-glow-rgb {
+        filter: blur(var(--glow-blur)) saturate(var(--glow-saturate))
+            brightness(var(--glow-brightness));
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+    .v-glow-rgb::before {
+        background-size: 250% 250%;
+        animation: v-lava-bg var(--glow-anim-duration) ease-in-out infinite
+            alternate;
+    }
+
+    .v-scene.vrgb .v-glow-lava {
+        opacity: 0;
+    }
+    .v-scene.vrgb .v-glow-rgb {
+        opacity: var(--vglow-p);
+    }
+    .v-scene.vrgb .v-glow-wrap::before {
+        opacity: 0;
+    }
+    .v-scene.vrgb .v-glow-wrap::after {
+        opacity: calc(var(--vglow-p) * 0.9);
+    }
+
+    @keyframes v-lava-bg {
+        0% {
+            background-position: 0% 0%;
+        }
+        25% {
+            background-position: 100% 20%;
+        }
+        50% {
+            background-position: 80% 100%;
+        }
+        75% {
+            background-position: 10% 90%;
+        }
+        100% {
+            background-position: 50% 50%;
+        }
+    }
+
+    @keyframes v-lava-soft {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+            transform: translate(-14px, 10px) scale(1.08);
+        }
+        100% {
+            transform: translate(12px, -10px) scale(1.02);
+        }
+    }
+
+    /* ── Glows por lado (hover en textos y mouse) ── */
+    .v-side {
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.45s ease;
+        filter: blur(var(--glow-blur)) saturate(var(--glow-saturate))
+            brightness(var(--glow-brightness));
+    }
+    .v-side::before {
+        background-size: 250% 250%;
+        animation: v-lava-bg var(--glow-anim-duration) ease-in-out infinite
+            alternate;
+        transition: background 0.3s ease;
+    }
+
+    /* Lado izquierdo */
+    .v-side-a::before {
+        clip-path: polygon(50% 2%, 2% 98%, 50% 65%);
+    }
+
+    /* Lado derecho */
+    .v-side-b::before {
+        clip-path: polygon(50% 2%, 50% 65%, 98% 98%);
+    }
+
+    /* Base */
+    .v-side-c::before {
+        clip-path: polygon(2% 98%, 50% 65%, 98% 98%);
+    }
+
+    .v-scene:is(.t-lit-a, .m-lit-a) .v-side-a,
+    .v-scene:is(.t-lit-b, .m-lit-b) .v-side-b,
+    .v-scene:is(.t-lit-c, .m-lit-c) .v-side-c {
+        opacity: 1;
+    }
+
+    /* Ocultar el glow por defecto si hay un lado iluminado por texto u mouse */
+    .v-scene:is(.t-lit-a, .t-lit-b, .t-lit-c, .m-lit-a, .m-lit-b, .m-lit-c)
+        .v-glow-lava,
+    .v-scene:is(.t-lit-a, .t-lit-b, .t-lit-c, .m-lit-a, .m-lit-b, .m-lit-c)
+        .v-glow-rgb,
+    .v-scene:is(.t-lit-a, .t-lit-b, .t-lit-c, .m-lit-a, .m-lit-b, .m-lit-c)
+        .v-glow-wrap::before,
+    .v-scene:is(.t-lit-a, .t-lit-b, .t-lit-c, .m-lit-a, .m-lit-b, .m-lit-c)
+        .v-glow-wrap::after {
+        opacity: 0 !important;
+    }
+
+    /* ── Textos ── */
+    .v-texts {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        width: 100%;
+        max-width: 380px;
+        padding: 0 0.5rem;
+    }
+
+    .v-text-item {
+        cursor: default;
+        outline: none;
+    }
+
+    .v-text-item h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: rgba(255, 255, 255, 0.4);
+        transition:
+            color 0.3s ease,
+            text-shadow 0.3s ease;
+        font-family: "Inter", sans-serif;
+    }
+
+    .v-reveal {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+            max-height 0.5s ease,
+            opacity 0.5s ease,
+            margin-top 0.5s ease;
+        opacity: 0;
+    }
+
+    .v-reveal p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.3);
+        font-family: "Inter", sans-serif;
+    }
+
+    .v-text-item:hover .v-reveal,
+    .v-text-item:focus-visible .v-reveal,
+    .v-text-item.active .v-reveal {
+        max-height: 8rem;
+        opacity: 1;
+        margin-top: 0.6rem;
+    }
+
+    .v-text-item[data-vside="a"]:hover h3,
+    .v-text-item[data-vside="a"]:focus-visible h3,
+    .v-text-item[data-vside="a"].active h3 {
+        color: var(--vpink);
+        text-shadow: 0 0 24px rgba(255, 45, 120, 0.6);
+    }
+
+    .v-text-item[data-vside="b"]:hover h3,
+    .v-text-item[data-vside="b"]:focus-visible h3,
+    .v-text-item[data-vside="b"].active h3 {
+        color: var(--vblue);
+        text-shadow: 0 0 24px rgba(47, 124, 255, 0.6);
+    }
+
+    .v-text-item[data-vside="c"]:hover h3,
+    .v-text-item[data-vside="c"]:focus-visible h3,
+    .v-text-item[data-vside="c"].active h3 {
+        color: var(--vgreen);
+        text-shadow: 0 0 24px rgba(22, 201, 94, 0.6);
+    }
+
+    /* ── Responsive: en desktop, escena y textos lado a lado ── */
+    @media (min-width: 1024px) {
+        .v-wrap {
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 12rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    }
+
+    /* ── Grain / Ruido de película ── */
+    .v-grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0.3;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.12'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 </style>
